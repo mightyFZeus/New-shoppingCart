@@ -1,10 +1,12 @@
 import "./styles.css";
-import Products from './components/Products/Products'
+
+import { Products, NavBar } from "./components";
+
 export default function App() {
   return (
     <>
-      <Products /> 
-
+      <NavBar />
+      <Products />
     </>
-  )
+  );
 }
