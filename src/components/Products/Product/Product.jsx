@@ -9,39 +9,48 @@ import {
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from "./Styles";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  Typography: {
+    fontFamily: ["Raleway", "sans-serif"].join(",")
+  }
+});
 
 const Product = ({ product }) => {
   const classes = useStyles();
   return (
-    <div>
-      <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          image={product.media.source}
-          title={product.name}
-        />
-        <CardContent>
-          <div className={classes.content}>
-            <Typography variant="h5" guttterBottom>
-              {product.name}
-            </Typography>
-            <Typography variant="h5" guttterBottom>
-              {product.price.formatted_with_symbol}
-            </Typography>
-          </div>
-          <Typography
-            dangerouslySetInnerHTML={{ __html: product.description }}
-            variant="body2"
-            color="textSecondary"
+    <ThemeProvider theme={theme}>
+      <div>
+        <Card className={classes.root}>
+          <CardMedia
+            className={classes.media}
+            image={product.media.source}
+            title={product.name}
           />
-        </CardContent>
-        <CardActions disableSpacing className={classes.cardActions}>
-          <IconButton aria-label="Add To Cart">
-            <AddShoppingCart />
-          </IconButton>
-        </CardActions>
-      </Card>
-    </div>
+          <CardContent>
+            <div className={classes.content}>
+              <Typography variant="h5" guttterBottom>
+                {product.name}
+              </Typography>
+              <Typography variant="h5" guttterBottom>
+                {product.price.formatted_with_symbol}
+              </Typography>
+            </div>
+            <Typography
+              dangerouslySetInnerHTML={{ __html: product.description }}
+              variant="body2"
+              color="textSecondary"
+            />
+          </CardContent>
+          <CardActions disableSpacing className={classes.cardActions}>
+            <IconButton aria-label="Add To Cart">
+              <AddShoppingCart />
+            </IconButton>
+          </CardActions>
+        </Card>
+      </div>
+    </ThemeProvider>
   );
 };
 
