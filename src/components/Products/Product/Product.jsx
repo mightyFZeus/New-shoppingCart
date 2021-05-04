@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from "./Styles";
+
+
 const Product = ({ product }) => {
   const classes = useStyles();
   return (
@@ -16,7 +18,7 @@ const Product = ({ product }) => {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={product.imageURL}
+          image={product.media.source}
           title={product.name}
         />
         <CardContent>
@@ -25,12 +27,11 @@ const Product = ({ product }) => {
               {product.name}
             </Typography>
             <Typography variant="h5" guttterBottom>
-              {product.price}
+              {product.price.formatted_with_symbol}
             </Typography>
           </div>
-          <Typography variant="body2" color="textSecondary">
-            {product.description}
-          </Typography>
+          <Typography dangerouslySetinnerHTML={{__html:product.description}} variant="body2" color="textSecondary" />
+            
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
           <IconButton aria-label="Add To Cart">
