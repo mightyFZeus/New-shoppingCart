@@ -13,9 +13,14 @@ export default function App() {
   };
 
   const fetchCart = async () => {
-    await commerce.cart.retrieve();
-    setCart(cart);
+    ;
+    setCart(await commerce.cart.retrieve());
   };
+
+  const handleAddTocart = async (productId, quantity) =>{
+      const item = await commerce.cart.add(productId, quantity)
+      setCart(item.cart)
+  }
 
   useEffect(() => {
     fetchProducts();
@@ -25,8 +30,8 @@ export default function App() {
   console.log(cart);
   return (
     <>
-      <NavBar />
-      <Products products={products} />
+      <NavBar totalItems={cart.total_items} />
+      <Products products={products} onAddToCart={handleAddTocart} />
     </>
   );
 }
