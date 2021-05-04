@@ -13,7 +13,8 @@ export default function App() {
   };
 
   const fetchCart = async () => {
-    setCart(await commerce.cart.retrieve());
+    await commerce.cart.retrieve();
+    setCart(cart);
   };
 
   useEffect(() => {
