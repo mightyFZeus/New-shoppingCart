@@ -10,7 +10,6 @@ import {
 import { AddShoppingCart } from "@material-ui/icons";
 import useStyles from "./Styles";
 
-
 const Product = ({ product }) => {
   const classes = useStyles();
   return (
@@ -30,8 +29,11 @@ const Product = ({ product }) => {
               {product.price.formatted_with_symbol}
             </Typography>
           </div>
-          <Typography dangerouslySetinnerHTML={{__html:product.description}} variant="body2" color="textSecondary" />
-            
+          <Typography
+            dangerouslySetInnerHTML={{ __html: product.description }}
+            variant="body2"
+            color="textSecondary"
+          />
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
           <IconButton aria-label="Add To Cart">
