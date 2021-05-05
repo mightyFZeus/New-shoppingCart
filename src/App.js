@@ -2,6 +2,7 @@ import "./styles.css";
 import { useState, useEffect } from "react";
 import { commerce } from "./Lib/Commerce";
 import { Products, NavBar, Cart } from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -28,10 +29,19 @@ export default function App() {
 
   // console.log(cart);
   return (
-    <>
-      <NavBar totalItems={cart.total_items} />
-      <Products products={products} onAddToCart={handleAddTocart} />
-      <Cart cart={cart} />
-    </>
+    <Router>
+      <>
+        <NavBar totalItems={cart.total_items} />
+        <Switch>
+          <Route exact path="/">
+            <Products products={products} onAddToCart={handleAddTocart} />
+          </Route>
+
+          <Route exact path="/Cart">
+            <Cart cart={cart} />
+          </Route>
+        </Switch>
+      </>
+    </Router>
   );
 }
