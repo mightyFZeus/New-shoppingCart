@@ -1,7 +1,7 @@
 import "./styles.css";
 import { useState, useEffect } from "react";
 import { commerce } from "./Lib/Commerce";
-import { Products, NavBar } from "./components";
+import { Products, NavBar, Cart } from "./components";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -13,25 +13,25 @@ export default function App() {
   };
 
   const fetchCart = async () => {
-    ;
     setCart(await commerce.cart.retrieve());
   };
 
-  const handleAddTocart = async (productId, quantity) =>{
-      const item = await commerce.cart.add(productId, quantity)
-      setCart(item.cart)
-  }
+  const handleAddTocart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+    setCart(item.cart);
+  };
 
   useEffect(() => {
     fetchProducts();
     fetchCart();
   }, []);
 
-  console.log(cart);
+  // console.log(cart);
   return (
     <>
       <NavBar totalItems={cart.total_items} />
-      <Products products={products} onAddToCart={handleAddTocart} />
+      {/* <Products products={products} onAddToCart={handleAddTocart} /> */}
+      <Cart cart={cart} />
     </>
   );
 }
