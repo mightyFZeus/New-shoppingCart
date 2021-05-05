@@ -4,19 +4,19 @@ import useStyles from "./Styles";
 
 export default function Cart({ cart }) {
   const classes = useStyles();
-  const test = cart.line_items;
-  const isEmpty = !test.length;
-  console.log(test, "test");
+  
+ 
+  console.log(cart.line_items, "test");
   const EmptyCart = () => (
     <Typography variant="subtitle1">
-      You have no items in the cart, satrt shopping now!
+      You have no items in the cart, start shopping now!
     </Typography>
   );
 
   const FilledCart = () => (
     <>
       <Grid container spacing={3}>
-        {test.map((item) => (
+        {cart.line_items.map((item) => (
           <Grid item xs={12} sm={4} key={item.id}>
             <div>{item.name}</div>
           </Grid>
@@ -49,6 +49,7 @@ export default function Cart({ cart }) {
       </div>
     </>
   );
+  if(!cart.line_items) return 'loading...'
 
   return (
     <Container>
@@ -56,7 +57,7 @@ export default function Cart({ cart }) {
       <Typography className={classes.title} variant="h3">
         Your Shopping Cart
       </Typography>
-      {isEmpty ? <EmptyCart /> : <FilledCart />}
+      {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
     </Container>
   );
 }

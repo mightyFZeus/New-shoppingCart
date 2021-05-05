@@ -30,7 +30,7 @@ export default function App() {
   return (
     <>
       <NavBar totalItems={cart.total_items} />
-      {/* <Products products={products} onAddToCart={handleAddTocart} /> */}
+      <Products products={products} onAddToCart={handleAddTocart} />
       <Cart cart={cart} />
     </>
   );
