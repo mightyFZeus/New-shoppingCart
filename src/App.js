@@ -63,7 +63,7 @@ export default function App() {
           </Route>
 
           <Route exact path="/CheckOut">
-            <CheckOut />
+            <CheckOut cart={cart} />
           </Route>
         </Switch>
       </>
