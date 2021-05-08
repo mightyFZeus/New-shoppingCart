@@ -1,7 +1,7 @@
 import "./styles.css";
 import { useState, useEffect } from "react";
 import { commerce } from "./Lib/Commerce";
-import { Products, NavBar, Cart } from "./components";
+import { Products, NavBar, Cart, CheckOut } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -60,6 +60,10 @@ export default function App() {
               handleRemoveFromCart={handleRemoveFromCart}
               handleUpdateCartQty={handleUpdateCartQty}
             />
+          </Route>
+
+          <Route exact path="/CheckOut">
+            <CheckOut />
           </Route>
         </Switch>
       </>
