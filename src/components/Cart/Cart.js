@@ -10,6 +10,7 @@ export default function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, 
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       You have no items in the cart 
+      <br /> 
       <Link to='/' className={classes.link}> <h1>start shopping now!</h1></Link>
     </Typography>
   );
