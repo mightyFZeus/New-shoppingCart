@@ -24,11 +24,14 @@ const CheckOut = ({ cart }) => {
   useEffect(() => {
     const generateToken = async () => {
       try {
-        const token = commerce.checkout.generateToken(cart.id, {
+        const token = await commerce.checkout.generateToken(cart.id, {
           type: "cart"
         });
+        console.log(token)
         setcheckOutToken(token);
-      } catch (error) {}
+      } catch (error) {
+        
+      }
     };
 
     generateToken();
