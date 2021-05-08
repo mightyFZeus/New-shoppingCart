@@ -24,7 +24,7 @@ export default function App() {
 
   const handleUpdateCartQty = async (productId, quantity) => {
     const { cart } = await commerce.cart.update(productId, { quantity });
-    setCart(cart.cart);
+    setCart(cart);
   };
 
   const handleRemoveFromCart = async (productId) => {
