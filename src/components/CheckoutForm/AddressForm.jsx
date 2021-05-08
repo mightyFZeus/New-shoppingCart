@@ -33,7 +33,8 @@ const AddressForm = ({ checkOutToken }) => {
     fetchShippingCountries(checkOutToken.id);
     
   }, []);
-
+  const countries = Object.entries(shippingCountries).map(([code, name]) =>({id:code, label:name}))
+  console.log(countries)
   return (
     <>
       <Typography variant="h6" gutterBottom>
@@ -52,10 +53,12 @@ const AddressForm = ({ checkOutToken }) => {
             <Grid item xs={12} sm={6}>
               <InputLabel>Shipping Country</InputLabel>
               <Select value={shippingCountry} fullWidth onChange={(e) => setshippingCountry(e.target.value)}>
-                {console.log(Object.entries(shippingCountries))}
-                <MenuItem key="" value="">
-                  select me
+                {countries.map((country)=>(
+                  <MenuItem key={country.id} value={country.id}>
+                  {country.label}
                 </MenuItem>
+                ))}
+                
               </Select>
             </Grid>
             {/* <Grid item xs={12} sm={6}>
