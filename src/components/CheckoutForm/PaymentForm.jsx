@@ -12,7 +12,7 @@ import {
 import {loadStripe} from '@stripe/stripe-js'
 import Review from './Review'
 
-const stripeApiKey='pk_test_26917d05dd1c54142c9c46cb3abaddd3bb69da346ffab'
+const stripeApiKey='pk_test_51Ip9LNLHUlXeOGwl83xhJpIg89e8O1H6J5nuH69DtLjPSfk3ySerW5tuAHbhHY5UxEFnBsAmpUPoKCzZcPkJ0ZAx00gAMhDHBn'
 
 const stripePromise = loadStripe(stripeApiKey)
 
@@ -49,9 +49,11 @@ const PaymentForm = ({checkOutToken, nextStep, OnCaptureCheckout, shippingData, 
             }
         }
 
-        OnCaptureCheckout(checkoutToken.id, orderData);
+        OnCaptureCheckout(checkOutToken.id, orderData);
         nextStep();
+        console.log(orderData)
       }
+      
   }
   return( 
       <>
