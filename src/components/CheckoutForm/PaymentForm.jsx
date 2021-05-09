@@ -12,9 +12,9 @@ import {
 import {loadStripe} from '@stripe/stripe-js'
 import Review from './Review'
 
+const stripeApiKey='pk_test_26917d05dd1c54142c9c46cb3abaddd3bb69da346ffab'
 
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+const stripePromise = loadStripe(stripeApiKey)
 
 const PaymentForm = ({checkOutToken, nextStep, OnCaptureCheckout, shippingData, backStep}) => {
   const handleSubmit =  async (event, elements, stripe) =>{
@@ -22,7 +22,7 @@ const PaymentForm = ({checkOutToken, nextStep, OnCaptureCheckout, shippingData, 
       if(!stripe || !elements) return;
 
       const cardElement = elements.getElement(CardElement)
-      const {error, paymentMethod} = await stripe.createPaymentMethod(type: 'card', card:cardElement)
+      const {error, paymentMethod} = await stripe.createPaymentMethod({type: 'card', card:cardElement})
 
       if(error){
         console.log(error)
