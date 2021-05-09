@@ -41,7 +41,7 @@ export default function App() {
   };
 
   const refreshCart = async () =>{
-    const newCart = await commerce.refresh()
+    const newCart = await commerce.cart.refresh()
 
     setCart(newCart)
   }
